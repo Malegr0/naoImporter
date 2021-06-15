@@ -18,11 +18,12 @@ public class Frame {
 
     CardLayout cl;
 
-    // TODO: add DImensions for each textfield
+    // TODO: add Dimensions for each textfield
     Frame() {
         frame = new JFrame("naoImporter");
         panelCont = new JPanel();
         cl = new CardLayout();
+        panelCont.setLayout(cl);
 
         //Initialize components for start
         panelStart = new JPanel();

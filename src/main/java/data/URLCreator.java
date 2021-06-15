@@ -1,8 +1,8 @@
 package data;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+//import org.json.simple.JSONObject;
+//import org.json.simple.parser.JSONParser;
+//import org.json.simple.parser.ParseException;
 
 import java.io.*;
 import java.net.*;
@@ -13,7 +13,7 @@ import java.util.StringJoiner;
 
 public class URLCreator {
 
-    public static final String address = getAddress();
+    public static final String address = "getAddress()";
     public static final String answersAddress = address + "/answers";
     public static final String genericTermsAddress = address + "/genericTerms";
     public static final String synonymsAddress = address + "/synonyms";
@@ -74,7 +74,7 @@ public class URLCreator {
         http.disconnect();
     }
 
-    public static String getAddress() {
+    /*public static String getAddress() {
         JSONParser parser = new JSONParser();
         String url = null;
         try(Reader reader = new FileReader("src/main/resources/url.json")) {
@@ -87,6 +87,6 @@ public class URLCreator {
             e.printStackTrace();
         }
         return url;
-    }
+    }*/
 
 }
