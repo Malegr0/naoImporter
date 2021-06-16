@@ -63,6 +63,20 @@ public class Frame {
         panelGT.setLayout(new FlowLayout());
         panelSyn.setLayout(new FlowLayout());
 
+
+        //Button listener logic
+        buttonAns.addActionListener(e -> {
+            cl.show(panelCont, "2");
+        });
+
+        buttonGT.addActionListener(e -> {
+            cl.show(panelCont, "3");
+        });
+
+        buttonSyn.addActionListener(e -> {
+            cl.show(panelCont, "4");
+        });
+
         //Adding component ot each panel
         panelStart.add(buttonAns);
         panelStart.add(buttonGT);
