@@ -2,6 +2,7 @@ package data;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class Frame {
 
@@ -18,7 +19,6 @@ public class Frame {
 
     CardLayout cl;
 
-    // TODO: add Dimensions for each textfield
     Frame() {
         frame = new JFrame("naoImporter");
         panelCont = new JPanel();
@@ -34,27 +34,27 @@ public class Frame {
         //Initialize components for answers
         panelAns = new JPanel();
         jlAnsCaseID = new JLabel("CaseID:");
-        jtfAnsCaseID = new JTextField();
+        jtfAnsCaseID = new JTextField(2);
         jlAnsKeywords = new JLabel("Keywords:");
-        jtfAnsKeywords = new JTextField();
+        jtfAnsKeywords = new JTextField(50);
         jlAnsAnswer = new JLabel("Answer:");
-        jtfAnsAnswer = new JTextField();
+        jtfAnsAnswer = new JTextField(50);
         buttonSendAns = new JButton("Send Data!");
 
         //Initialize components for generic terms
         panelGT = new JPanel();
         jlGTID = new JLabel("ID");
-        jtfGTID = new JTextField();
+        jtfGTID = new JTextField(2);
         jlGTGenericTerm = new JLabel("Generic term:");
-        jtfGTGenericTerm = new JTextField();
+        jtfGTGenericTerm = new JTextField(15);
         buttonSendGT = new JButton("Send Data!");
 
         //Initialize components for synonyms
         panelSyn = new JPanel();
         jlSynSynonym = new JLabel("Synonym:");
-        jtfSynSynonym = new JTextField();
+        jtfSynSynonym = new JTextField(15);
         jlSynID = new JLabel("ID:");
-        jtfSynID = new JTextField();
+        jtfSynID = new JTextField(2);
         buttonSendSyn = new JButton("Send Data!");
 
         //Configuring each component
@@ -63,13 +63,52 @@ public class Frame {
         panelGT.setLayout(new FlowLayout());
         panelSyn.setLayout(new FlowLayout());
 
-
         //Button listener logic
         buttonAns.addActionListener(e -> cl.show(panelCont, "2"));
 
         buttonGT.addActionListener(e -> cl.show(panelCont, "3"));
 
         buttonSyn.addActionListener(e -> cl.show(panelCont, "4"));
+
+        buttonSendAns.addActionListener(e -> {
+            int caseID = Integer.parseInt(jtfAnsCaseID.getText());
+            String keywords = jtfAnsKeywords.getText();
+            String answer = jtfAnsAnswer.getText();
+
+            try {
+                URLCreator.sendAnswer(caseID, keywords, answer);
+            } catch (IOException | InterruptedException ioException) {
+                ioException.printStackTrace();
+            }
+
+            cl.show(panelCont, "1");
+        });
+
+        buttonSendGT.addActionListener(e -> {
+            int id = Integer.parseInt(jtfGTID.getText());
+            String genericTerm = jtfGTGenericTerm.getText();
+
+            try {
+                URLCreator.sendGenericTerm(id, genericTerm);
+            } catch (IOException | InterruptedException ioException) {
+                ioException.printStackTrace();
+            }
+
+            cl.show(panelCont, "1");
+        });
+
+        buttonSendSyn.addActionListener(e -> {
+            String synonym = jtfSynSynonym.getText();
+            int id = Integer.parseInt(jtfSynID.getText());
+
+            try {
+                URLCreator.sendSynonym(synonym, id);
+            } catch (IOException | InterruptedException ioException) {
+                ioException.printStackTrace();
+            }
+
+            cl.show(panelCont, "1");
+        });
 
         //Adding component ot each panel
         panelStart.add(buttonAns);
