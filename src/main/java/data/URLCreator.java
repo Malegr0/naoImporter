@@ -13,7 +13,7 @@ import java.util.StringJoiner;
 
 public class URLCreator {
 
-    public static final String address = "getAddress()";
+    public static final String address = getAddress();
     public static final String answersAddress = address + "/answers";
     public static final String genericTermsAddress = address + "/genericTerms";
     public static final String synonymsAddress = address + "/synonyms";
