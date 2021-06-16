@@ -65,17 +65,11 @@ public class Frame {
 
 
         //Button listener logic
-        buttonAns.addActionListener(e -> {
-            cl.show(panelCont, "2");
-        });
+        buttonAns.addActionListener(e -> cl.show(panelCont, "2"));
 
-        buttonGT.addActionListener(e -> {
-            cl.show(panelCont, "3");
-        });
+        buttonGT.addActionListener(e -> cl.show(panelCont, "3"));
 
-        buttonSyn.addActionListener(e -> {
-            cl.show(panelCont, "4");
-        });
+        buttonSyn.addActionListener(e -> cl.show(panelCont, "4"));
 
         //Adding component ot each panel
         panelStart.add(buttonAns);
