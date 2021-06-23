@@ -79,10 +79,7 @@ public class URLCreator {
         String url = null;
         try(Reader reader = new FileReader("src/main/resources/url.json")) {
             JSONObject jsonObject = (JSONObject) parser.parse(reader);
-            //System.out.println(jsonObject);
-
             url = (String) jsonObject.get("url");
-            //System.out.println(url);
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
