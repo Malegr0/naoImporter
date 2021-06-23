@@ -3,4 +3,4 @@
 /gradlew
 /gradlew.bat
 /settings.gradle
-/src/main/resources/url.json
+/src/main/java/data/Credentials.java

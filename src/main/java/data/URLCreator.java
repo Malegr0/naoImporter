@@ -13,7 +13,7 @@ import java.util.StringJoiner;
 
 public class URLCreator {
 
-    public static final String address = getAddress();
+    public static final String address = Credentials.URL;
     public static final String answersAddress = address + "/answers";
     public static final String genericTermsAddress = address + "/genericTerms";
     public static final String synonymsAddress = address + "/synonyms";
@@ -72,18 +72,6 @@ public class URLCreator {
         }
 
         http.disconnect();
-    }
-
-    public static String getAddress() {
-        JSONParser parser = new JSONParser();
-        String url = null;
-        try(Reader reader = new FileReader("src/main/resources/url.json")) {
-            JSONObject jsonObject = (JSONObject) parser.parse(reader);
-            url = (String) jsonObject.get("url");
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-        }
-        return url;
     }
 
 }
