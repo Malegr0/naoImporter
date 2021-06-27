@@ -80,7 +80,7 @@ public class Frame {
             } catch (IOException | InterruptedException ioException) {
                 ioException.printStackTrace();
             }
-
+            reset();
             cl.show(panelCont, "1");
         });
 
@@ -93,7 +93,7 @@ public class Frame {
             } catch (IOException | InterruptedException ioException) {
                 ioException.printStackTrace();
             }
-
+            reset();
             cl.show(panelCont, "1");
         });
 
@@ -106,7 +106,7 @@ public class Frame {
             } catch (IOException | InterruptedException ioException) {
                 ioException.printStackTrace();
             }
-
+            reset();
             cl.show(panelCont, "1");
         });
 
@@ -148,6 +148,16 @@ public class Frame {
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+    }
+
+    private void reset() {
+        jtfAnsCaseID.setText("");
+        jtfAnsKeywords.setText("");
+        jtfAnsAnswer.setText("");
+        jtfGTID.setText("");
+        jtfGTGenericTerm.setText("");
+        jtfSynSynonym.setText("");
+        jtfSynID.setText("");
     }
 
 }
